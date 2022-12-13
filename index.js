@@ -7,3 +7,8 @@ console.log(resultado);
 console.log(resultado2);
 
 
+let a = "10";
+let b = "20";
+
+
+console.log(parseInt(a) + parseInt(b));
