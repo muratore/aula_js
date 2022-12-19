@@ -1,23 +1,23 @@
-/* let pais = `Brasil`;
-titulo.style.color=`tomato`;
-
-
-let frase = `Um país continental`;
-let adjetivo = "Tropical";
-let fraseInteira = `${pais} ${frase}`.replace(`continental`,`${adjetivo}`);
-titulo.textContent= fraseInteira;
-// Concatenar string utilzando template string - Forma atualizada de concatenação
-
-console.log(`${pais} ${frase}`);
- */
-// Calcular desconto
-
 // Select Elements
-let showValue = document.querySelector("#showValue")
 let priceInput = document.querySelector("#price")
 const btnDiscount = document.querySelector("#btn-price")
+const productTxt = document.querySelector('.product--txt')
+const discountTxt = document.querySelector('.discount--txt')
+const totalTxt = document.querySelector('.total--txt')
 
 let saleOff = 20
+
+// Função para checar se são apenas números.
+
+function checkImput() {
+  let number = /^[0-9]+$/;
+  if (priceInput.value.match(number)) {
+    let productValue = (priceInput.value)
+    calculateDiscount(productValue)
+  }else{
+    return alert('Only numbers are allowed')
+  }
+}
 
 // Prompt input 
 let discount = Number(prompt('Insira o seu disconto aqui', saleOff));
@@ -25,7 +25,7 @@ let discount = Number(prompt('Insira o seu disconto aqui', saleOff));
 // Check if input is a number and is filled
 while(!discount){
 // Discount is 0 if cancel is pressed.  
-   if(discount === 0) {
+  if(discount === 0) {
   promptMSN('É preciso preencher o campo e clicar em ok')
 } else{
   promptMSN('Insira apenas números')
@@ -40,10 +40,14 @@ function promptMSN(message){
 // Form function
 btnDiscount.addEventListener("click", (evt)=>{
  evt.preventDefault()
- let productValue = (priceInput.value)
- calculateDiscount(productValue)
+ checkImput();
 })
+
+// Function to calculate a discount
 const calculateDiscount = (valor)=>{
   let finalValue =  parseFloat(valor - (valor * discount / 100)).toFixed(2).replace(".", ",");
-  showValue.textContent= `O desconto é de ${discount}% e o valor final é: ${finalValue}` ;
+  discountTxt.textContent = `${discount}%`;
+  productTxt.textContent = `${parseFloat(priceInput.value).toFixed(2).replace('.', ',')}`
+  totalTxt.textContent = `${finalValue}`
+
 }

@@ -4,20 +4,26 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/style.css">
   <title>Aula 01 - javascript</title>
 </head>
 
 <body>
-
+<div class="container">
   <h1 id="titulo">Calcular desconto do produto</h1>
   <form action="#">
-    <label for="price"></label>
-    <input type="number" id="price" placeholder="insira o valor do produto" >
+    <label for="price">Valor do produto</label>
+    <input type="text" pattern="[0-9]+" id="price" placeholder="insira o valor do produto" >
     <button id="btn-price"> obter desconto</button>
 
   </form>
   <h2 id="showValue"></h2>
-  <script src="index.js"></script>
-  <script src="main.js"></script>
+  <h3>O valor do desconto é de: <span class="discount--txt"></span></h3>
+  <h3>O valor do produto é de: <span class="product--txt"></span></h3>
+  <h3>Valor final com desconto: <span class="total--txt"></span></h3>
+  <script src="./assets/index.js"></script>
+  <script src="./assets/main.js"></script>
+
+</div>
 </body>
 </html>
